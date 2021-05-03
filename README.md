@@ -6,3 +6,4 @@ React
 Next.js
 SSG (Static Side Generation)
 JSON server
+Axios
