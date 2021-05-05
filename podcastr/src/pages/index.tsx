@@ -1,6 +1,9 @@
 import { GetStaticProps } from 'next'
+import Image from 'next/image'
+
 import { format, parseISO } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
+
 import { api } from '../services/api'
 import { convertDurationToTimeString } from '../utils/convertDurationToTimeString'
 
@@ -15,7 +18,7 @@ type Episode = {
   duration: number;
   durationAsString: string;
   url: string;
-  published_at: string;
+  publishedAt: string;
 }
 
 type HomeProps = {
@@ -32,8 +35,24 @@ export default function Home({ latestEpisodes, allEpisodes }: HomeProps) {
         <ul>
           {latestEpisodes.map(episode => {
             return (
-              <li>
-                <a href="">{episode.title}</a>
+              <li key={episode.id}>
+                <Image 
+                  width={192} 
+                  height={192} 
+                  src={episode.thumbnail} 
+                  alt={episode.title} 
+                />
+
+                <div className={styles.episodeDetails}>
+                  <a href="">{episode.title}</a>
+                  <p>{episode.members}</p>
+                  <span>{episode.publishedAt}</span>
+                  <span>{episode.durationAsString}</span>
+                </div>                
+
+                <button type="button">
+                  <img src="/play-green.svg" alt="Tocar episódio" />
+                </button>
               </li>
             )
           })}
