@@ -7,8 +7,10 @@ import { PlayerContext } from '../contexts/PlayerContext'
 import styles from '../styles/app.module.scss'
 
 function MyApp({ Component, pageProps }) {
+  
+
   return (
-    <PlayerContext.Provider value={'Al'}>
+    <PlayerContext.Provider value={{ episodeList: [], currentEpisodeIndex: 0 }}>
       <div className={styles.wrapper}>
         <main>
           <Header />
