@@ -4,13 +4,14 @@ type Episode = {
   title: string;
   members: string;
   thumbnail: string;
-  duration: string;
+  duration: number;
   url: string;
 }
 
 type PlayerContextData = {
   episodeList: Episode[];
   currentEpisodeIndex: number;
+  play: (episode: Episode) => void;
 }
 
 export const PlayerContext = createContext({} as PlayerContextData) // createContext é mais utilizado para definir o tipo de dado que será salvo no contexto
